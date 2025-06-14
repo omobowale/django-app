@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'blog/styles.css' %}" />
+    <title>My Blog</title>
+  </head>
+
+  <body>
+    <h1 class="page-title">These are my feeds:</h1>
+    <div>
+      <a href="{% url 'create_feed' %}">New post</a>
+    </div>
+    <div class="container">
+      {% for feed in feeds %}
+        <div class="feed-card">
+          <p class="feed-title">{{ feed.title }}</p>
+          <p class="feed-content">{{ feed.description }}</p>
+          <div>
+            <p class="feed-timestamp">{{ feed.published_date }}</p>
+            <div class="feed-actions">
+              <a href="{% url 'single_feed' feed.id %}"><span class="feed-view"><i class="fa fa-eye" aria-hidden="true"></i></span></a>
+              <a href="{% url 'edit_feed' feed.id %}"><span class="feed-edit"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+              <form method="POST" action="{% url 'delete_feed' feed.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="feed-delete" style="background: none; border: none; cursor: pointer;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+body {
+
+    font-family: Inter;
+
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+}
+
+.feed-card {
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 1em;
+    cursor: pointer;
+    margin: 0.5em 0;
+}
+
+.feed-card:hover {
+    border: none;
+    background-color: lavender;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.feed-title {
+    font-size: 24px;
+}
+
+.feed-timestamp {
+    font-size: 10px;
+    font-style: italic;
+}
+
+.feed-content {}
+
+.feed-actions {
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    gap: 0.5em;
+}
+
+.fa-pencil {
+    color: blue;
+}
+
+.fa-trash {
+    color: red;
+}
+
+.fa-eye {
+    color: green;
+}
+
+.back-arrow {
+    cursor: pointer
+}
+
+input {
+    
+}
